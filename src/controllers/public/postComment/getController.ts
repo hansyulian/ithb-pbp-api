@@ -17,6 +17,7 @@ export const getController = controller(
       authorName: optional(String),
       createdAt: Date,
       updatedAt: Date,
+      deletedAt: optional(Date),
     },
   },
   async function ({ params, service }) {
