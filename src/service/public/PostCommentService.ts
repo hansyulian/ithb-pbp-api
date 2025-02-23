@@ -6,6 +6,7 @@ import {
 } from "~/models/PostComment";
 import { WhereOptions } from "sequelize";
 import { PaginatedArrayResponse } from "~/lib/apiBlueprint";
+import { NotFoundException } from "~/exceptions/NotFoundExceptions";
 
 export class PostCommentService extends BasePublicService {
   async create(data: PostCommentCreationAttributes): Promise<PostComment> {
@@ -13,8 +14,14 @@ export class PostCommentService extends BasePublicService {
     return PostComment.create(data);
   }
 
-  async getById(id: string): Promise<PostComment | null> {
-    return PostComment.findByPk(id);
+  async getById(id: string): Promise<PostComment> {
+    const record = await PostComment.findByPk(id, {
+      paranoid: false,
+    });
+    if (!record) {
+      throw new NotFoundException("postComment", { id });
+    }
+    return record;
   }
 
   async update(

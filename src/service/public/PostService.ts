@@ -11,7 +11,9 @@ export class PostService extends BasePublicService {
   }
 
   async getById(id: string): Promise<Post> {
-    const record = await Post.findByPk(id);
+    const record = await Post.findByPk(id, {
+      paranoid: false,
+    });
     if (!record) {
       throw new NotFoundException("post", { id });
     }
