@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { taskController } from "~/controllers/task";
+import { createRouter } from "~/lib/createRouter";
+import { commonController } from "./common";
 
-export const controllers = Router();
-controllers.use("/task", taskController);
+export const controllers = createRouter();
+controllers.use("/", commonController);

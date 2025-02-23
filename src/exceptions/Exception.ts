@@ -18,4 +18,4 @@ export abstract class Exception<Details extends object = {}> extends Error {
   }
 }
 
-export type ExceptionGroup = "user" | "session" | "file" | "claim";
+export type ExceptionGroup = "user" | "session" | "file";
