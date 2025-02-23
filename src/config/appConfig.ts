@@ -1,6 +1,5 @@
 import "dotenv/config";
 import path from "path";
-const databaseConfig = require("./database.js");
 const pe = process.env;
 
 export const appConfig = {
@@ -22,7 +21,16 @@ export const appConfig = {
     port: pe.API_PORT ? parseInt(pe.API_PORT) : 3000,
     url: pe.API_URL || "http://localhost:3000",
   },
-  db: databaseConfig,
+  db: {
+    username: pe.DB_USERNAME,
+    password: pe.DB_PASSWORD,
+    database: pe.DB_DATABASE,
+    host: pe.DB_HOST,
+    port: parseInt(pe.DB_PORT || "5432"),
+    dialect: "postgres",
+    storage: pe.DB_STORAGE,
+    logging: pe.DB_LOGGING,
+  },
   jwt: {
     expiry: parseInt(pe.JWT_EXPIRY || `${30 * 24 * 3600}`),
     secret: pe.JWT_SECRET ?? "supersecretjwtkey",
