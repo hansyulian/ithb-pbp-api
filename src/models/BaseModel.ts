@@ -16,4 +16,13 @@ export abstract class BaseModel<
   declare deletedAt: Date | undefined;
 }
 
-export type SequelizeCreationPreset<T> = T & { id?: string; deletedAt?: Date };
+export type SequelizeCreationPreset<T> = Omit<
+  T,
+  "id" | "createdAt" | "updatedAt" | "deletedAt"
+> & { id?: string };
+export type SequelizeAttributes<T> = T & {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+};

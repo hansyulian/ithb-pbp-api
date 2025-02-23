@@ -2,6 +2,8 @@ import { createNamespace } from "cls-hooked";
 import { Sequelize, SequelizeOptions } from "sequelize-typescript";
 import { appConfig } from "~/config";
 import { Enum } from "~/models/Enum";
+import { Post } from "~/models/Post";
+import { PostComment } from "~/models/PostComment";
 import { Session } from "~/models/Session";
 import { User } from "~/models/User";
 
@@ -33,7 +35,7 @@ export function setupDatabase(
     dialect: "postgres",
     storage: dbConfig.storage,
     logging,
-    models: [User, Session, Enum],
+    models: [User, Session, Enum, Post, PostComment],
     ...sequelizeOptions,
   };
   const sequelize = new Sequelize(sequelizeConfig);

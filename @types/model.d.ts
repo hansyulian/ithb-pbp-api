@@ -21,3 +21,18 @@ type UpdateOmit<
 > = Omit<Partial<T>, keyof BaseAttributes | K>;
 
 type OmitBase<T> = Omit<T, keyof BaseAttributes>;
+
+type SequelizePaginationOptions = {
+  limit?: number;
+  offset?: number;
+  order?: Order;
+};
+
+type SequelizeIncludeOptions = {
+  include?: Includeable | Includeable[];
+};
+
+type SequelizePaginatedResult<DataType> = {
+  rows: DataType[];
+  count: number;
+};

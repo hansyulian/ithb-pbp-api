@@ -33,6 +33,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      role: {
+        type: Sequelize.ENUM("admin", "common"),
+        allowNull: false,
+        defaultValue: "common",
+      },
       status: {
         type: Sequelize.ENUM("pending", "active", "suspended"),
         allowNull: false,
@@ -62,10 +67,11 @@ module.exports = {
     const now = new Date();
     const createdAt = now;
     const updatedAt = now;
+    const role = "admin";
 
     await queryInterface.sequelize.query(
-      `INSERT INTO "Users" ("id", "name", "email", "password", "status", "createdAt", "updatedAt")
-      VALUES (:id, :name, :email, :password, :status, :createdAt, :updatedAt)`,
+      `INSERT INTO "Users" ("id", "name", "email", "password", "status", "createdAt", "updatedAt","role")
+      VALUES (:id, :name, :email, :password, :status, :createdAt, :updatedAt, :role)`,
       {
         replacements: {
           id,
@@ -75,6 +81,7 @@ module.exports = {
           status,
           createdAt,
           updatedAt,
+          role,
         },
         type: Sequelize.QueryTypes.INSERT,
       }

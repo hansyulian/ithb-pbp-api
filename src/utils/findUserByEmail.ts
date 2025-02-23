@@ -1,6 +1,6 @@
-import { Op } from "sequelize";
 import { UserNotFoundException } from "~/exceptions/NotFoundExceptions";
 import { User } from "~/models/User";
+import { queryParser } from "~/utils/queryParser";
 
 export async function findUserByEmail(email: string): Promise<User>;
 export async function findUserByEmail(
@@ -10,9 +10,7 @@ export async function findUserByEmail(
 export async function findUserByEmail(email: string, nulling = false) {
   const user = await User.findOne({
     where: {
-      email: {
-        [Op.iRegexp]: `^${email}$`,
-      },
+      email: queryParser.stringLike(email),
     },
   });
   if (!user && !nulling) {

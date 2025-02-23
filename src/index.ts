@@ -1,13 +1,12 @@
 import { createApp } from "~/app";
+import { appConfig } from "~/config";
 import { setupDatabase } from "~/lib/sequelize";
-
-const PORT = 33333;
 
 async function init() {
   const app = await createApp({
     sequelizeInstance: setupDatabase(),
   });
-  app.listen(PORT);
-  console.log("API started at port", PORT);
+  app.listen(appConfig.api.port);
+  console.log("API started at port", appConfig.api.port);
 }
 init();

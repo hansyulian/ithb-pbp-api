@@ -1,5 +1,5 @@
 import { createRouter } from "~/lib/createRouter";
-import { commonController } from "./common";
+import { publicController } from "./public";
 
 export const controllers = createRouter();
-controllers.use("/", commonController);
+controllers.use("/", publicController);
