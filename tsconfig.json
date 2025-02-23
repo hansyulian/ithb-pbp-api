@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2016",
+    "module": "commonjs",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "~/*": ["src/*"],
+      "~test/*": ["test/*"]
+    }
+  },
+  "include": ["src", "@types", "test"]
+}
