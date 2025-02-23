@@ -22,12 +22,12 @@ export type DBConfig = {
 };
 
 export function setupDatabase(
-  dbConfig: DBConfig = appConfig.db,
+  dbConfig = appConfig.db,
   sequelizeOptions: Partial<SequelizeOptions> = {}
 ) {
   const logging = dbConfig.logging === "console" ? console.log : () => {};
   const sequelizeConfig: SequelizeOptions = {
-    username: dbConfig.user,
+    username: dbConfig.username,
     password: dbConfig.password,
     database: dbConfig.database,
     host: dbConfig.host,

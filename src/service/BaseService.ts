@@ -24,17 +24,7 @@ export abstract class BaseService {
     return this.serviceSession.user;
   }
 
-  protected get fileService() {
-    return this.parent.file;
-  }
   protected get userRole() {
     return this.sessionUser.role;
-  }
-
-  protected get userOId() {
-    return this.sessionUser._id;
-  }
-  protected get userId() {
-    return this.sessionUser.id;
   }
 }

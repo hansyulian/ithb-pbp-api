@@ -20,5 +20,5 @@
       "~test/*": ["test/*"]
     }
   },
-  "include": ["src", "@types", "test"]
+  "include": ["src", "@types", "test", "sequelize/database.js"]
 }
